@@ -8,12 +8,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import InputError from '@/components/InputError.vue';
-import { type BreadCrumbItem } from '@/types';
+import { type BreadcrumbItem } from '@/types';
 import { dashboard } from '@/routes';
 import { Plus, Pencil, Trash2, ExternalLink, Loader2 } from 'lucide-vue-next';
 import { ref } from 'vue';
 
-const breadcrumbs: BreadCrumbItem[] = [
+const breadcrumbs: BreadcrumbItem[] = [
     { title: 'Dashboard', href: dashboard().url },
     {title: 'Lists', href: '/lists'},
 ];
@@ -86,7 +86,7 @@ const deletingListId = ref<number | null>(null);
             router.delete(`/lists/${listId}`, {
                 preserveScroll: true,
                 onFinish:() => {
-                    deleteingListId.value = null;
+                    deletingListId.value = null;
                 },
             });
         }
@@ -212,7 +212,7 @@ const deletingListId = ref<number | null>(null);
                             </Button>
                             <Button variant="destructive" size="sm" @click="deleteList(list.id)" :disabled="deletingListId === list.id">
 
-                                <Loader2 v-if="deleteingListId === list.id" class="h-4 w-4 animate-spin" />
+                                <Loader2 v-if="deletingListId === list.id" class="h-4 w-4 animate-spin" />
                                 <Trash2 v-else class="h-4 w-4"/>
                             </Button>
                         </div>

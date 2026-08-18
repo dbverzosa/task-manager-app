@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\TodoList;
@@ -27,7 +26,7 @@ class ListController extends Controller
     public function store (Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name'=> ['required', 'string', 'max:225'],
+            'name'=> ['required', 'string', 'max:255'],
             'color'=> ['nullable', 'string', 'max:32'],
         ]);
 
